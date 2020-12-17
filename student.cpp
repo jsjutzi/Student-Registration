@@ -7,6 +7,7 @@
 //
 
 #include "student.hpp"
+#include "degree.hpp"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -15,81 +16,73 @@ using std::string;
 using std::vector;
 using std::cout;
 
-class Student {
-    private:
-        // Properties
-        string studentId;
-        string firstName;
-        string lastName;
-        string email;
-        int age;
-        vector<int> daysInCourse;
-        string degreeProgram;
-    
-    public:
-        // Constructor
-        Student(string studentId, string firstName, string lastName, string email, int age, vector<int> daysInCourse, string degreeProgram) {
-            studentId = studentId;
-            firstName = firstName;
-            lastName = lastName;
-            email = email;
-            age = age;
-            daysInCourse = daysInCourse;
-            degreeProgram = degreeProgram;
-        };
-    
-        // Setters
-        void setStudentId(string studentId){
+
+// Constructor
+Student::Student(string studentId, string firstName, string lastName, string email, int age, vector<int> daysInCourse, DegreeProgram degreeProgram) {
+    this->studentId = studentId;
+    this->firstName = firstName;
+    this->lastName = lastName;
+    this->email = email;
+    this->age = age;
+    this->daysInCourse = daysInCourse;
+    this->degreeProgram = degreeProgram;
+};
+
+// Setters
+void Student::setStudentId(string studentId){
             this->studentId = studentId;
-        }
-        void setFirstName(string firstName) {
+}
+void Student::setFirstName(string firstName) {
             this->firstName = firstName;
-        };
-        void setLastName(string lastName){
+};
+void Student::setLastName(string lastName){
             this->lastName = lastName;
-        };
-        void setEmail(string email) {
+};
+void Student::setEmail(string email) {
             this->email = email;
-        };
-        void setAge(int age) {
+};
+void Student::setAge(int age) {
             this->age = age;
-        };
-        void setDaysInCours(vector<int> days) {
+};
+void Student::setDaysInCourse(vector<int> days) {
             this->daysInCourse = days;
-        };
-        void setDegreeProgram(string degree) {
+};
+void Student::setDegreeProgram(DegreeProgram degree) {
             this->degreeProgram = degree;
-        };
+};
     
         // Getters
-        string getStudentId() const {
+string Student::getStudentId() const {
             return studentId;
-        }
-        string getFirstName() const {
+}
+string Student::getFirstName() const {
             return firstName;
-        }
-        string getLastName() const {
+}
+string Student::getLastName() const {
             return lastName;
-        }
-        string getEmail() const {
+}
+string Student::getEmail() const {
             return email;
-        }
-        int getAge() const {
+}
+int Student::getAge() const {
             return age;
-        }
-        vector<int> getDaysInCourse() const {
+}
+vector<int> Student::getDaysInCourse() {
             return daysInCourse;
-        }
-        string getDegree() const {
+}
+DegreeProgram Student::getDegreeProgram() {
             return degreeProgram;
+}
+void Student::print() {
+            cout << "\t First Name: " << getFirstName();
+            cout << "\t Last Name: " << getLastName();
+            cout << "\t Email: " << getEmail();
+            cout << "\t Age: " << getAge();
+            cout << "\t Days in Course: {" << getDaysInCourse()[0] << ", " << getDaysInCourse()[1] << ", " << getDaysInCourse()[3];
+            
+            cout << "\n\t Degree Program: " << getDegreeProgram();
         }
-    void print() {
-        cout << "\t First Name: " << getFirstName();
-        cout << "\n\t Last Name: " << getLastName();
-        cout << "\n\t Email: " << getEmail();
-        cout << "\n\t Age: " << getAge();
-        cout << "\n\t Days in Course: " << getDaysInCourse()[0] << getDaysInCourse()[1] << getDaysInCourse()[3];
-        
-        cout << "\n\t Degree Program: " << getDegree();
-    }
-};
+    
+// Destructor
+// Student::~Student();
+
