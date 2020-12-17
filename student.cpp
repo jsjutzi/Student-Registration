@@ -51,27 +51,27 @@ void Student::setDegreeProgram(DegreeProgram degree) {
             this->degreeProgram = degree;
 };
     
-        // Getters
+// Getters
 string Student::getStudentId() const {
-            return studentId;
+            return this->studentId;
 }
 string Student::getFirstName() const {
-            return firstName;
+            return this->firstName;
 }
 string Student::getLastName() const {
-            return lastName;
+            return this->lastName;
 }
 string Student::getEmail() const {
-            return email;
+            return this->email;
 }
 int Student::getAge() const {
-            return age;
+            return this->age;
 }
 vector<int> Student::getDaysInCourse() {
-            return daysInCourse;
+            return this->daysInCourse;
 }
 DegreeProgram Student::getDegreeProgram() {
-            return degreeProgram;
+            return this->degreeProgram;
 }
 void Student::print() {
             cout << "\t First Name: " << getFirstName();
@@ -84,5 +84,5 @@ void Student::print() {
         }
     
 // Destructor
-// Student::~Student();
+Student::~Student() {};
 

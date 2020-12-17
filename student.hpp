@@ -19,7 +19,7 @@ using std::string;
 using std::vector;
 
 class Student {
-    private:
+    protected:
         // Properties
         string studentId;
         string firstName;
@@ -31,6 +31,7 @@ class Student {
     public:
         // Constructors
         Student(string studentId, string firstName, string lastName, string email, int age, vector<int> daysInCourse, DegreeProgram degreeProgram);
+        ~Student();
     
         // Getters
         string getStudentId() const;
