@@ -24,9 +24,9 @@ using std::vector;
 
 void Roster::add(string studentId, string firstName, string lastName, string emailAddress, int age, vector<int> daysInCourse, DegreeProgram degreeProgram) {
         
-    Student *student = new Student(studentId, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
+    Student student = Student(studentId, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
     
-    classRosterArray.push_back(*student);
+    classRosterArray.push_back(student);
 //    cout << classRosterArray[-1].getFirstName();
     
 }
@@ -41,7 +41,7 @@ void Roster::remove(string studentId) {
     }
 }
 void Roster::printAll() {
-    for (int i = 0; i < classRosterArray.size() - 1; i++) {
+    for (int i = 0; i < classRosterArray.size(); i++) {
         classRosterArray[i].print();
     }
 }
@@ -87,5 +87,5 @@ Roster::Roster() {
         this->classRosterArray = vector<Student>{};
 }
 
-// Call Destructor to release memory allocation
+// Destructor
 Roster::~Roster() {}

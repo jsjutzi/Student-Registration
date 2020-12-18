@@ -14,23 +14,26 @@
 
 using std::stringstream;
 using std::stoi;
+using std::cout;
+using std::endl;
 
 int main(int argc, const char * argv[]) {
     
     const std::string studentData[] {
-        "A1, John, Smith, John1989@gmail.com, 20, 30, 35, 40, SECURITY",
-        "A2, Suzan, Erickson, Erickson_1990@gmail.com, 19, 50, 30, 40, NETWORK",
-        "A3, Jack, Napoli, The_lawyer99yahoo.com, 19, 20, 40, 33, SOFTWARE",
-        "A4, Erin, Black, Erin.black@comcast.net, 22, 50, 58, 40, SECURITY",
-        "A5, Jack, Jutzi, jjutzi@wgu.edu, 33, 20, 30, 40, SOFTWARE"
+        "A1,John,Smith,John1989@gmail.com,20,30,35,40,SECURITY",
+        "A2,Suzan,Erickson,Erickson_1990@gmail.com,19,50,30,40,NETWORK",
+        "A3,Jack, Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+        "A4,Erin, Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+        "A5,Jack, Jutzi,jjutzi@wgu.edu,33,20,30,40,SOFTWARE"
     };
     
     // Initialize Roster
-    Roster *roster = new Roster();
+    Roster *classRoster = new Roster();
     DegreeProgram degreeProgram = SOFTWARE;
+
     
-//     Populate Roster
-    for (int i = 0; i < sizeof(studentData) -1; i++) {
+    // Populate Roster
+    for (int i = 0; i <= 4; i++) {
         stringstream ss(studentData[i]);
         
         vector<string> studentProps;
@@ -53,19 +56,20 @@ int main(int argc, const char * argv[]) {
         if (studentProps[8] == "SOFTWARE") {
             degreeProgram = SOFTWARE;
         }
+        
         // Parse age to int
         int parsedAge = stoi(studentProps[4]);
-        
+
         // Parse days to int's for vector
         currDaysInCourse.push_back(stoi(studentProps[5]));
         currDaysInCourse.push_back(stoi(studentProps[6]));
         currDaysInCourse.push_back(stoi(studentProps[7]));
-        
+
         // Add student to roster
-        roster->add(studentProps[0], studentProps[1], studentProps[2], studentProps[3], parsedAge, currDaysInCourse, degreeProgram);
-        
+        classRoster->add(studentProps[0], studentProps[1], studentProps[2], studentProps[3], parsedAge, currDaysInCourse, degreeProgram);
+
     }
-    roster->printAverageDaysInCourse("A1");
+    classRoster->printAll();
     
     return 0;
 }

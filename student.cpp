@@ -15,6 +15,7 @@
 using std::string;
 using std::vector;
 using std::cout;
+using std::endl;
 
 
 // Constructor
@@ -27,6 +28,10 @@ Student::Student(string studentId, string firstName, string lastName, string ema
     this->daysInCourse = daysInCourse;
     this->degreeProgram = degreeProgram;
 };
+
+
+// Destructor
+Student::~Student() {};
 
 // Setters
 void Student::setStudentId(string studentId){
@@ -71,18 +76,32 @@ vector<int> Student::getDaysInCourse() {
             return this->daysInCourse;
 }
 DegreeProgram Student::getDegreeProgram() {
+    cout << this->degreeProgram << endl;
             return this->degreeProgram;
 }
 void Student::print() {
-            cout << "\t First Name: " << getFirstName();
-            cout << "\t Last Name: " << getLastName();
-            cout << "\t Email: " << getEmail();
-            cout << "\t Age: " << getAge();
-            cout << "\t Days in Course: {" << getDaysInCourse()[0] << ", " << getDaysInCourse()[1] << ", " << getDaysInCourse()[3];
-            
-            cout << "\n\t Degree Program: " << getDegreeProgram();
-        }
+    string studentDegree = "";
     
-// Destructor
-Student::~Student() {};
+    switch(getDegreeProgram()) {
+        case 0:
+            studentDegree = "NETWORK";
+            break;
+        case 1:
+            studentDegree = "SECURITY";
+            break;
+        case 2:
+            studentDegree = "SOFTWARE";
+            break;
+        default:
+            break;
+    }
+    
+    cout << "\t First Name: " << getFirstName();
+    cout << "\t Last Name: " << getLastName();
+    cout << "\t Email: " << getEmail();
+    cout << "\t Age: " << getAge();
+    cout << "\t Days in Course: {" << getDaysInCourse()[0] << ", " << getDaysInCourse()[1] << ", " << getDaysInCourse()[2] << "}";
+    
+    cout << "\t Degree Program: " << studentDegree << endl;
+}
 
