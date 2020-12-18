@@ -53,8 +53,6 @@ class Student {
         void setAge(int age);
         void setDaysInCourse(vector<int>);
         void setDegreeProgram(DegreeProgram degreeProgram);
-    
-//        ~Student();
 };
 
 #endif /* student_hpp */

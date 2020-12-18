@@ -76,7 +76,6 @@ vector<int> Student::getDaysInCourse() {
             return this->daysInCourse;
 }
 DegreeProgram Student::getDegreeProgram() {
-    cout << this->degreeProgram << endl;
             return this->degreeProgram;
 }
 void Student::print() {
@@ -91,8 +90,6 @@ void Student::print() {
             break;
         case 2:
             studentDegree = "SOFTWARE";
-            break;
-        default:
             break;
     }
     

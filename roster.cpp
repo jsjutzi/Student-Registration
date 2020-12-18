@@ -23,21 +23,24 @@ using std::vector;
 
 
 void Roster::add(string studentId, string firstName, string lastName, string emailAddress, int age, vector<int> daysInCourse, DegreeProgram degreeProgram) {
-        
     Student student = Student(studentId, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
-    
     classRosterArray.push_back(student);
-//    cout << classRosterArray[-1].getFirstName();
     
 }
 void Roster::remove(string studentId) {
     int i = 0;
+    bool foundMatch = false;
     for (iter = classRosterArray.begin(); iter < classRosterArray.end(); iter++, i++) {
         if (classRosterArray[i].getStudentId() == studentId) {
             classRosterArray.erase(iter);
+            foundMatch = true;
             cout << "Removed student with student id of " << studentId << endl;
             break;
         }
+    }
+    
+    if (!foundMatch) {
+        cout << "No student was found matching this student Id." << endl;
     }
 }
 void Roster::printAll() {
@@ -48,15 +51,15 @@ void Roster::printAll() {
 void Roster::printAverageDaysInCourse(string studentId) {
     int totalDays = 0;
     
-    for (int i = 0; i < classRosterArray.size() - 1; i++) {
+    for (int i = 0; i < classRosterArray.size(); i++) {
         if (classRosterArray[i].getStudentId() == studentId) {
-            for (int j = 0; j < classRosterArray[i].getDaysInCourse().size() -1; j++) {
+            for (int j = 0; j < 3; j++) {
                 totalDays += classRosterArray[i].getDaysInCourse()[j];
             }
         }
     }
     
-    cout << "Average number of days in course for student with student id " << studentId << " is: " << totalDays << endl;
+    cout << "Average number of days in course for student with student id " << studentId << " is: " << totalDays / 3 << endl;
 }
 
 void Roster::printInvalidEmails() {
@@ -74,8 +77,21 @@ void Roster::printInvalidEmails() {
 }
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
     // prints out all students in a given degree program
-    cout << "Students in the " << degreeProgram << " degree program: " << endl;
-    for (int i = 0; i < classRosterArray.size() -1; i++) {
+    string studentDegree = "";
+    
+    switch(degreeProgram) {
+        case 0:
+            studentDegree = "NETWORK";
+            break;
+        case 1:
+            studentDegree = "SECURITY";
+            break;
+        case 2:
+            studentDegree = "SOFTWARE";
+            break;
+    }
+    cout << "Students in the " << studentDegree << " degree program: " << endl;
+    for (int i = 0; i < classRosterArray.size(); i++) {
         if (classRosterArray[i].getDegreeProgram() == degreeProgram) {
             classRosterArray[i].print();
         }
